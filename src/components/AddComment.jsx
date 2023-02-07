@@ -1,14 +1,14 @@
 import { Button, Form } from 'react-bootstrap'
 import { useState, useEffect } from 'react' ;
 
-let asin;
+
 
 const AddComment = (props) => {
 
   const [comment, setComment] = useState({
     comment: '',
     rate: 1,
-    elementId: asin,
+    elementId: props.asin,
   })
 
   useEffect(() => {
