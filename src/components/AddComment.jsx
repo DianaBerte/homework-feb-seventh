@@ -12,8 +12,8 @@ const AddComment = () => {
   })
 
   useEffect(() => {
-
-  })
+    sendComment()
+  }, [asin])
 
   // componentDidUpdate(prevProps) {
   //   if (prevProps.asin !== this.props.asin) {
@@ -27,7 +27,7 @@ const AddComment = () => {
   // }
 
   const sendComment = async (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     try {
       let response = await fetch(
         'https://striveschool-api.herokuapp.com/api/comments',
