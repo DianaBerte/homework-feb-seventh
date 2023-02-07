@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react' ;
 
 let asin;
 
-const AddComment = () => {
+const AddComment = (props) => {
 
   const [comment, setComment] = useState({
     comment: '',
@@ -12,19 +12,13 @@ const AddComment = () => {
   })
 
   useEffect(() => {
-    sendComment()
-  }, [asin])
+    setComment({
+      ...comment,
+      elementId: props.asin,
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.asin]);
 
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.asin !== this.props.asin) {
-  //     this.setState({
-  //       comment: {
-  //         ...this.state.comment,
-  //         elementId: this.props.asin,
-  //       },
-  //     })
-  //   }
-  // }
 
   const sendComment = async (e) => {
     // e.preventDefault()
@@ -45,7 +39,7 @@ const AddComment = () => {
         setComment({
             comment: '',
             rate: 1,
-            elementId: asin,
+            elementId: props.asin,
         })
       } else {
         console.log('error')
